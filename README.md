@@ -81,14 +81,45 @@ Note: Vi editor will be open, change below point -
 - press ESC button
 - :wq (To save and exit from vi editor)
 - systemctl reload sshd
+- passwd root
+Note: Set password as per your convenience
 
 SSH connection part 
 
-Step-5: JENKINS-SERVER
+Step-5: JENKINS-SERVER (connection between jenkins server to ansible server)
 - ssh-keygen
 - ssh-copy-id -i root@[private IP of ANSIBLE-SERVER]
 - ssh root@[private IP of ANSIBLE-SERVER]
-- 
+
+Step-6: ANSIBLE-SERVER (connection beteen ansible server to docker hub)
+- ssh-keygen
+- ssh-copy-id -i root@[private IP of DOCKER-HUB]
+- ssh root@[private IP of DOCKER-HUB]
+
+Step-7: Go to Jenkins Dashboard -> Manage Jenkins -> Manage Plugins -> Available plugins \
+Search ssh, Find Public Over SSH - Install and restart
+
+Step-8: Manage Jenkins -> Configure System -> Scroll down to SSH servers -> Add \
+Name - jenkins \
+Hostname - private IP of jenkins server \
+Username - root \
+Click on Advance -  \
+Tick on 'Use password authentication, or use a different key' \
+Type Password that we had set \
+Scroll Down and click on "Test Configuration" \
+If password is correct "SUCCESS" message will be displayed  
+
+Click on ADD \
+Name - ansible \
+Hostname - private IP of ansible server \
+Username - root \
+Click on Advance -  \
+Tick on 'Use password authentication, or use a different key' \
+Type Password that we had set \
+Scroll Down and click on "Test Configuration" \
+If password is correct "SUCCESS" message will be displayed \
+Apply & Save
+
 
 
 
