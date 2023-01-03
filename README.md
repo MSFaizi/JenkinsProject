@@ -61,4 +61,62 @@ Note: vi edior will be open, mention below line \
 
 ![image](https://user-images.githubusercontent.com/102685509/210386810-1c4c392c-39ef-437b-ae73-99f66f34886d.png)
 
+- yum install docker -y
+- systemctl enable docker
+- systemctl start docker
+
+Step-4: DOCKER-HOST 
+- ec2-user
+- sudo su
+- hostnamectl set-hostname jenkins
+- bash
+- yum install docker -y
+- systemctl enable docker
+- systemctl start docker
+- systemctl status docker
+- vi /etc/ssh/sshd_config \
+Note: Vi editor will be open, change below point - 
+1. Uncomment 'PermitRootLogin yes'
+2. Change PasswordAuthentication no to yes
+- press ESC button
+- :wq (To save and exit from vi editor)
+- systemctl reload sshd
+
+SSH connection part 
+
+Step-5: JENKINS-SERVER
+- ssh-keygen
+- ssh-copy-id -i root@[private IP of ANSIBLE-SERVER]
+- ssh root@[private IP of ANSIBLE-SERVER]
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
