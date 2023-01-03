@@ -23,5 +23,42 @@ Step-2: JENKINS-SERVER
 - systemctl status jenkins
 - systemctl enable jenkins
 - systemctl start jenkins
-- systemctl status jenkins
+- systemctl status jenkins \
+Note: Copy public IP of JENKINS-SERVER and paste in browser with port 8080. Further it will ask for Administration password- Copy path given above and use below command
+- cat [paste copied path] \
+Note: After using above command, password will be displayed copy that and paste in Administration Pasword field and choose Continue & Install suggested plugins
+- passwd root \
+Note: Set password as per your convenience
+- vi /etc/ssh/sshd_config 
+
+Note: Vi editor will be open, change below point - 
+1. Uncomment 'PermitRootLogin yes'
+2. Change PasswordAuthentication no to yes
+- press ESC button
+- :wq (To save and exit from vi editor)
+- systemctl reload sshd
+
+Step-3: ANSIBLE-SERVER
+- ec2-user
+- sudo su
+- hostnamectl set-hostname ansible
+- bash
+- sudo amazon-linux-extras install ansible2
+- passwd root \
+Note: Set password as per your convenience
+- vi /etc/ssh/sshd_config 
+
+Note: Vi editor will be open, change below point - 
+1. Uncomment 'PermitRootLogin yes'
+2. Change PasswordAuthentication no to yes
+- press ESC button
+- :wq (To save and exit from vi editor)
+- systemctl reload sshd
+- vi /etc/ansible/hosts \
+Note: vi edior will be open, mention below line \
+[DOCKER-HOST] \
+172.31.86.212 (private Ip of docker host)
+
+![image](https://user-images.githubusercontent.com/102685509/210386810-1c4c392c-39ef-437b-ae73-99f66f34886d.png)
+
 
